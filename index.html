@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Road2Gainz</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="./stylesheets/main.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+		integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
+
+
+
+</head>
+
+
+<body>
+	<div class="ui inverted vertical center aligned segment">
+		<div class="">
+
+			<h1 style="display: none;" id="toggle-bar">☰</h1>
+
+			<img class="ui circular profile image" src="./stylesheets/images/elonmusk.png">
+
+			<h3 style="color:white;margin: auto;">Welcome back, Elon!</h3>
+
+
+
+		</div>
+	</div>
+	<!-- <img src="./stylesheets/images/exercise.png" > -->
+	<div class="ui three column center aligned stackable grid" style="margin:auto;">
+		
+		<div class="row">
+			<div class="column" >
+				<div class="cols">
+					<a href="">
+						<img class="ui circular image" src="./stylesheets/images/goal.png">
+					</a>
+					<h3>Goals</h3>
+				</div>
+			</div>
+			<div class="column ">
+				<div class="cols">
+					<a href="">
+						<img class="ui circular image" src="./stylesheets/images/diet.png">
+					</a>
+					<h3>Diet</h3>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="cols">
+					<a href="./views/exercise1.html">
+						<img class="ui circular image" src="./stylesheets/images/dumbell.png">
+					</a>
+					<h3>Exercises</h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<div class="cols">
+					<a href="">
+						<img class="ui circular image" src="./stylesheets/images/progress.png">
+					</a>
+					<h3>Progress </h3>
+				</div>
+			</div>
+			<div class="column">
+				<div class="cols">
+					<a href="">
+						<img class="ui circular image" src="./stylesheets/images/kickboxing.png">
+					</a>
+					<h3>Self-Defense Videos</h3>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+
+
+
+
+
+	<script>
+
+		function toggleMenu() {
+			let getMenu = document.querySelector(".mainMenu");
+			getMenu.classList.toggle("hamburger");
+		}
+		let getHamburger = document.querySelector("#toggle-bar");
+
+		getHamburger.addEventListener("click", toggleMenu);
+
+		document.querySelectorAll('.cols').forEach(el => {
+			// el.addEventListener('mousemove', handleMove);
+			el.addEventListener('mouseover', function(){
+				el.style.transform = 'perspective(500px) scale(1.1) ';
+			})
+			console.log(el);
+			/* Add listener for mouseout event, remove the rotation */
+			el.addEventListener('mouseout', function() {
+				el.style.transform = 'perspective(500px) scale(1)'
+			})
+
+			/* Add listener for mousedown event, to simulate click */
+			el.addEventListener('mousedown', function() {
+				el.style.transform = 'perspective(500px) scale(0.9)'
+			})
+
+			/* Add listener for mouseup, simulate release of mouse click */
+			el.addEventListener('mouseup', function() {
+				el.style.transform = 'perspective(500px) scale(1.1)'
+			})
+		});
+
+		// let el = document.getElementById('tilt')
+
+		// /* Get the height and width of the element */
+		// const height = el.clientHeight
+		// const width = el.clientWidth
+
+		/*
+		* Add a listener for mousemove event
+		* Which will trigger function 'handleMove'
+		* On mousemove
+		*/
+		
+
+		/* Define function a */
+		function handleMove(e) {
+			/*
+				* Get position of mouse cursor
+				* With respect to the element
+				* On mouseover
+				*/
+			/* Store the x position */
+			let xVal = e.layerX;
+			/* Store the y position */
+			let yVal = e.layerY;
+			/*
+				* Calculate rotation valuee along the Y-axis
+				* Here the multiplier 20 is to
+				* Control the rotation
+				* You can change the value and see the results
+				*/
+			// const yRotation = 20 * ((xVal - width / 2) / width)
+			
+			// /* Calculate the rotation along the X-axis */
+			// const xRotation = -20 * ((yVal - height / 2) / height)
+			
+			/* Generate string for CSS transform property */
+			const string = 'perspective(500px) scale(1.1) ';
+			
+			/* Apply the calculated transformation */
+			this.style.transform = string;
+		}
+
+		
+
+	</script>
+
+	<script type="text/javascript" src="./stylesheets/model.js"></script>
+</body>
+
+</html>
