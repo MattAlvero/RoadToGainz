@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road2Gainz</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+        integrity="sha256-t8GepnyPmw9t+foMh3mKNvcorqNHamSKtKRxxpUEgFI=" crossorigin="anonymous"></script>
+
+
+
+</head>
+<body>
+    <div style="justify-content: space-evenly;" id="navbar" class="ui secondary pointing menu">
+        <a href="../index.html" class="item">
+            Home
+        </a>
+        <a  href="./exercise1.html" class="item">
+            Exercises
+        </a>
+        <a  href="./diet.html" class="item active">
+            diet
+        </a>
+        <a  href="" class="item">
+            Goals
+        </a>
+        </a>
+        <a  href="./progress.html" class="item">
+            Progress Report
+        </a>
+        
+        
+    </div>
+    <div class="ui grid" id = "dietGrid">
+        <div class="three wide column">
+            <h1 id = "dietText">
+                CALORIES
+            </h1>
+            <div class="label2">1040 consumed</div>
+            <div class="ui teal progress" data-percent="74">
+                <div class="bar"></div>
+                <div class="label">560 calories remaining</div>
+              </div>
+        </div>
+        <div class="three wide column">
+            <h1 id = "dietText">
+                NUTRIENTS
+            </h1>
+            <div class="label2">Carbohydrates</div>
+            <div class="ui teal progress">
+                <div class="bar"></div>
+                <div class="label">50g remaining</div>
+              </div>
+              <div class="label2">Protein</div>
+              <div class="ui teal progress">
+                  <div class="bar"></div>
+                  <div class="label">74g remaining</div>
+                </div>
+            <div class="label2">Fat</div>
+            <div class="ui teal progress">
+                <div class="bar"></div>
+                <div class="label">12g over goal</div>
+              </div>
+        </div>
+        <div class="three wide column">
+            <h1 id = "dietText">
+                STEPS
+            </h1>
+            <div class="label2">430 calories burned</div>
+            <div class="ui teal progress">
+                <div class="bar"></div>
+                <div class="label">8256/10000 steps</div>
+              </div>
+        </div>
+      </div>
+</body>

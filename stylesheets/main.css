@@ -339,3 +339,12 @@ span {
 	
 
 }
+/* css for the diet page */
+#dietText{
+	-webkit-text-stroke: 2px black;
+	color:honeydew;
+	font-weight: bolder;
+	font-size: 40px;
+	
+}
+
