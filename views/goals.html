@@ -24,13 +24,13 @@
                 <a href="../index.html" class="item">
                     Home
                 </a>
-                <a  href="./exercise1.html" class="item active">
+                <a  href="./exercise1.html" class="item">
                     Exercises
                 </a>
                 <a  href="./diet.html" class="item">
                     diet
                 </a>
-                <a  href="./goals.html" class="item">
+                <a  href="./goals.html" class="item active">
                     Goals
                 </a>
                 </a>
@@ -53,57 +53,24 @@
     <div class="ui three column center aligned stackable grid">
         <div class="row">
             <div class="column">
-                <div class="cols">
-                    <a href="../views/arms.html">
-                        <img style="border: 2px solid black;" class="ui circular image"
-                            src="../stylesheets/images/arms.png">
-                    </a>
-                    <h3>Biceps/Triceps</h3>
+                <div class="checkcols">
+                    <div class="ui checkbox" style="margin-bottom: 20px;">
+                        <div id="theContainer">
+                            <input type="checkbox" name="example">
+                            <label>Bench 200 lbs</label>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="column">
-                <div class="cols">
-                    <a href="../views/chest.html">
-                        <img style="border: 2px solid black;" class="ui circular image"
-                            src="../stylesheets/images/chest.png">
-                    </a>
-                    <h3>Chest</h3>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="cols">
+                        <img style="border: 2px solid black;" class="ui tiny image"
+                        src="../stylesheets/images/plus.png">
+                    </div>
+                        <input type="text" name="newItem" style="transform: scale(0.75);" id="InputText">
                 </div>
-            </div>
-
-            <div class="column">
-                <div class="cols">
-                    <a href="../views/back.html">
-                        <img style="border: 2px solid black;" class="ui circular image"
-                            src="../stylesheets/images/back.png">
-                    </a>
-                    <h3>Back</h3>
-                </div>
+                
             </div>
         </div>
-        <div class="row">
-            <div class="column">
-                <div class="cols">
-                    <a href="../views/legs.html">
-                        <img style="border: 2px solid black;" class="ui circular image"
-                            src="../stylesheets/images/legs.png">
-                    </a>
-                    <h3>Legs</h3>
-                </div>
-            </div>
-            <div class="column">
-                <div class="cols">
-                    <a href="../views/cardio.html">
-                        <img style="border: 2px solid black;" class="ui circular image"
-                            src="../stylesheets/images/kickboxing.png">
-                    </a>
-                    <h3>Self-Defense</h3>
-                </div>
-
-            </div>
-
-
-
     </div>
 
 
@@ -127,6 +94,26 @@
             /* Add listener for mouseup, simulate release of mouse click */
             el.addEventListener('mouseup', function () {
                 el.style.transform = 'perspective(500px) scale(1.1)'
+            })
+            
+            el.addEventListener('click', function() {
+                var text = document.getElementById('InputText').value;
+                var checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = text;
+                checkbox.name = text;
+                checkbox.value = text;
+                console.log(text);
+                var label = document.createElement('label')
+                label.htmlFor = text;
+                label.appendChild(document.createTextNode(text));
+            
+                var br = document.createElement('br');
+            
+                var container = document.getElementById('theContainer');
+                container.appendChild(checkbox);
+                container.appendChild(label);
+                container.appendChild(br);
             })
         });
     </script>
