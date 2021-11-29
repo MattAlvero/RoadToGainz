@@ -58,16 +58,16 @@
                 <div class="checkcols">
                     <div id="theContainer">
                         <div class="ui checkbox" style="margin-bottom: 20px;">
-                            <input type="checkbox" name="exampleGoal">
+                            <input type="checkbox" name="Goal" value="Bench 250 lbs">
                             <label>Bench 200 lbs</label>
+                            <img src="/stylesheets/images/bench.png" width="30" height="30"> 
                         </div>
-                        <img src="bench.png" width="30" height="30"> 
                         <br>
                         <div class="ui checkbox" style="margin-bottom: 20px;">
-                            <input type="checkbox" name="exampleGoal2">
-                            <label>Bench 201 lbs</label>
+                            <input type="checkbox" name="Goal" value="Deadlift 300 lbs">
+                            <label>Deadlit 300 lbs</label>
+                            <img src="/stylesheets/images/deadlift.png" width="30" height="30"> 
                         </div>
-                        <img src="bench.png" width="30" height="30"> 
                     </div>
                 </div>
             </div>
@@ -76,19 +76,19 @@
                     Recently Completed Goals
                 </h1>
                 <div class="checkcols">
-                    <div id="theContainer">
+                    <div id="theCompleted">
                         <div class="ui checkbox" style="margin-bottom: 20px;">
-                            <input type="checkbox" checked="" name="exampleComplete" onclick="return false;">
+                            <input type="checkbox" checked="" name="checked" onclick="return false;">
                             <label>Bench 200 lbs</label>
+                            <img src="/stylesheets/images/bench.png" width="30" height="30"> 
                         </div>
-                        <img src="bench.png" width="30" height="30">                        
+                                               
                         <br>
                         <div class="ui checkbox align-items center" style="margin-bottom: 20px;" >
-                            <input type="checkbox" checked="" name="exampleComplete2" onclick="return false;">
-                            <label>Bench 201 lbs</label>
-                            
+                            <input type="checkbox" checked="" name="checked" onclick="return false;">
+                            <label>Squat 250 lbs</label>
+                            <img src="/stylesheets/images/squat.png" width="30" height="30">
                         </div>
-                        <img src="bench.png" width="30" height="30">
                     </div>
                 </div>
             </div>
@@ -98,11 +98,16 @@
             Add new Goal:
         </h1>
         <div class="row" style="margin-bottom: 20px;">
-            <div class="cols">
-                <img style="border: 2px solid black;" class="ui tiny image"
-                src="../stylesheets/images/plus.png">
-            </div>
+            <div class="column" id="enterGoal">
                 <input type="text" name="newItem" style="transform: scale(0.75);" id="InputText">
+                <div class="cols">
+                    <img style="border: 2px solid black;" class="ui tiny image"
+                    src="../stylesheets/images/plus.png">
+                </div>
+            </div>
+            <div class="popup">
+                <span class="popuptext" id="myPopup">Please Enter your Goal!</span>
+            </div>
         </div>
     </div>
     
@@ -131,6 +136,11 @@
             
             el.addEventListener('click', function() {
                 var text = document.getElementById('InputText').value;
+                if(text==""){
+                    var popup = document.getElementById("myPopup");
+                    popup.classList.toggle("show");
+                    return;
+                }
                 var classContain = document.createElement('div');
                 classContain.className = 'ui checkbox';
                 //classContain.type = 'ui checkbox';
@@ -138,7 +148,71 @@
                 var checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.id = text;
-                checkbox.name = text;
+                checkbox.name = "Goal";
+                checkbox.onclick = function(){
+                    var text = this.value;
+                    var classContain = document.createElement('div');
+                    classContain.className = 'ui checkbox';
+                    //classContain.type = 'ui checkbox';
+                    classContain.style = 'margin-bottom: 20px';
+                    var checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.checked = true;
+                    checkbox.name = "checked";
+                    checkbox.onclick = function(){
+                        return false;
+                    }
+                    checkbox.value = text;
+                    console.log(text);
+                    var label = document.createElement('label')
+                    label.htmlFor = text;
+                    label.appendChild(document.createTextNode(text));
+                
+                    var br = document.createElement('br');
+                    classContain.appendChild(checkbox);
+                    classContain.appendChild(label);
+                    // Check if Bench is present and add png
+                    var checkBench = text.includes('Bench');
+                    if(checkBench==false) {
+                        checkBench = text.includes('bench');
+                    }
+                    if(checkBench==true){
+                        var image = document.createElement('img');
+                        image.src = "/stylesheets/images/bench.png";
+                        image.width = 30;
+                        image.height = 30;
+                        classContain.appendChild(image);
+                    }
+                    // Check if Deadlift is present and add png
+                    var checkDeadlift = text.includes('Deadlift');
+                    if(checkDeadlift==false) {
+                        checkDeadlift = text.includes('deadlift');
+                    }
+                    if(checkDeadlift==true){
+                        var image = document.createElement('img');
+                        image.src = "/stylesheets/images/deadlift.png";
+                        image.width = 30;
+                        image.height = 30;
+                        classContain.appendChild(image);
+                    }
+                    // Check if Squat is present and add png
+                    var checkSquat = text.includes('Squat');
+                    if(checkSquat==false) {
+                        checkSquat = text.includes('squat');
+                    }
+                    if(checkSquat==true){
+                        var image = document.createElement('img');
+                        image.src = "/stylesheets/images/squat.png";
+                        image.width = 30;
+                        image.height = 30;
+                        classContain.appendChild(image);
+                    }
+                    var container = document.getElementById('theCompleted');
+                    container.appendChild(br);
+                    container.appendChild(classContain);
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                    return;
+                }
                 checkbox.value = text;
                 console.log(text);
                 var label = document.createElement('label')
@@ -148,9 +222,111 @@
                 var br = document.createElement('br');
                 classContain.appendChild(checkbox);
                 classContain.appendChild(label);
+                // Check if Bench is present and add png
+                var checkBench = text.includes('Bench');
+                if(checkBench==false) {
+                    checkBench = text.includes('bench');
+                }
+                if(checkBench==true){
+                    var image = document.createElement('img');
+                    image.src = "/stylesheets/images/bench.png";
+                    image.width = 30;
+                    image.height = 30;
+                    classContain.appendChild(image);
+                }
+                // Check if Deadlift is present and add png
+                var checkDeadlift = text.includes('Deadlift');
+                if(checkDeadlift==false) {
+                    checkDeadlift = text.includes('deadlift');
+                }
+                if(checkDeadlift==true){
+                    var image = document.createElement('img');
+                    image.src = "/stylesheets/images/deadlift.png";
+                    image.width = 30;
+                    image.height = 30;
+                    classContain.appendChild(image);
+                }
+                // Check if Squat is present and add png
+                var checkSquat = text.includes('Squat');
+                if(checkSquat==false) {
+                    checkSquat = text.includes('squat');
+                }
+                if(checkSquat==true){
+                    var image = document.createElement('img');
+                    image.src = "/stylesheets/images/squat.png";
+                    image.width = 30;
+                    image.height = 30;
+                    classContain.appendChild(image);
+                }
                 var container = document.getElementById('theContainer');
                 container.appendChild(br);
                 container.appendChild(classContain);
+            })
+        });
+        document.querySelectorAll('input[name="Goal"]').forEach(e1=> {
+            e1.addEventListener('click', function() {
+                var text = e1.value;
+                var classContain = document.createElement('div');
+                classContain.className = 'ui checkbox';
+                //classContain.type = 'ui checkbox';
+                classContain.style = 'margin-bottom: 20px';
+                var checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.checked = true;
+                checkbox.name = "checked";
+                checkbox.onclick = function(){
+                    return false;
+                }
+                checkbox.value = text;
+                console.log(text);
+                var label = document.createElement('label')
+                label.htmlFor = text;
+                label.appendChild(document.createTextNode(text));
+            
+                var br = document.createElement('br');
+                classContain.appendChild(checkbox);
+                classContain.appendChild(label);
+                // Check if Bench is present and add png
+                var checkBench = text.includes('Bench');
+                if(checkBench==false) {
+                    checkBench = text.includes('bench');
+                }
+                if(checkBench==true){
+                    var image = document.createElement('img');
+                    image.src = "/stylesheets/images/bench.png";
+                    image.width = 30;
+                    image.height = 30;
+                    classContain.appendChild(image);
+                }
+                // Check if Deadlift is present and add png
+                var checkDeadlift = text.includes('Deadlift');
+                if(checkDeadlift==false) {
+                    checkDeadlift = text.includes('deadlift');
+                }
+                if(checkDeadlift==true){
+                    var image = document.createElement('img');
+                    image.src = "/stylesheets/images/deadlift.png";
+                    image.width = 30;
+                    image.height = 30;
+                    classContain.appendChild(image);
+                }
+                // Check if Squat is present and add png
+                var checkSquat = text.includes('Squat');
+                if(checkSquat==false) {
+                    checkSquat = text.includes('squat');
+                }
+                if(checkSquat==true){
+                    var image = document.createElement('img');
+                    image.src = "/stylesheets/images/squat.png";
+                    image.width = 30;
+                    image.height = 30;
+                    classContain.appendChild(image);
+                }
+                var container = document.getElementById('theCompleted');
+                container.appendChild(br);
+                container.appendChild(classContain);
+                this.parentNode.parentNode.removeChild(this.parentNode);
+                return;
             })
         });
     </script>
