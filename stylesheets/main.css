@@ -53,6 +53,10 @@ img {
 	
 }
 
+#goalGrid {
+	margin: 2%;
+}
+
 .ui.profile {
 	height: auto;
 	width: 138px;

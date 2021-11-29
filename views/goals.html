@@ -47,32 +47,65 @@
                 class="ui icon button">
                 <i class="big left arrow icon"></i>
             </button></a>
-        Select Category
 
     </h1>
-    <div class="ui three column center aligned stackable grid">
+    <div class="ui three column center aligned stackable grid" id="goalGrid">
         <div class="row">
             <div class="column">
+                <h1>
+                    Recently Added Goals
+                </h1>
                 <div class="checkcols">
-                    <div class="ui checkbox" style="margin-bottom: 20px;">
-                        <div id="theContainer">
-                            <input type="checkbox" name="example">
+                    <div id="theContainer">
+                        <div class="ui checkbox" style="margin-bottom: 20px;">
+                            <input type="checkbox" name="exampleGoal">
                             <label>Bench 200 lbs</label>
                         </div>
+                        <img src="bench.png" width="30" height="30"> 
+                        <br>
+                        <div class="ui checkbox" style="margin-bottom: 20px;">
+                            <input type="checkbox" name="exampleGoal2">
+                            <label>Bench 201 lbs</label>
+                        </div>
+                        <img src="bench.png" width="30" height="30"> 
                     </div>
                 </div>
-                <div class="row" style="margin-bottom: 20px;">
-                    <div class="cols">
-                        <img style="border: 2px solid black;" class="ui tiny image"
-                        src="../stylesheets/images/plus.png">
+            </div>
+            <div class="column">
+                <h1>
+                    Recently Completed Goals
+                </h1>
+                <div class="checkcols">
+                    <div id="theContainer">
+                        <div class="ui checkbox" style="margin-bottom: 20px;">
+                            <input type="checkbox" checked="" name="exampleComplete" onclick="return false;">
+                            <label>Bench 200 lbs</label>
+                        </div>
+                        <img src="bench.png" width="30" height="30">                        
+                        <br>
+                        <div class="ui checkbox align-items center" style="margin-bottom: 20px;" >
+                            <input type="checkbox" checked="" name="exampleComplete2" onclick="return false;">
+                            <label>Bench 201 lbs</label>
+                            
+                        </div>
+                        <img src="bench.png" width="30" height="30">
                     </div>
-                        <input type="text" name="newItem" style="transform: scale(0.75);" id="InputText">
                 </div>
-                
             </div>
         </div>
+        
+        <h1>
+            Add new Goal:
+        </h1>
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="cols">
+                <img style="border: 2px solid black;" class="ui tiny image"
+                src="../stylesheets/images/plus.png">
+            </div>
+                <input type="text" name="newItem" style="transform: scale(0.75);" id="InputText">
+        </div>
     </div>
-
+    
 
     <script>
         document.querySelectorAll('.cols').forEach(el => {
@@ -98,6 +131,10 @@
             
             el.addEventListener('click', function() {
                 var text = document.getElementById('InputText').value;
+                var classContain = document.createElement('div');
+                classContain.className = 'ui checkbox';
+                //classContain.type = 'ui checkbox';
+                classContain.style = 'margin-bottom: 20px';
                 var checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 checkbox.id = text;
@@ -109,11 +146,11 @@
                 label.appendChild(document.createTextNode(text));
             
                 var br = document.createElement('br');
-            
+                classContain.appendChild(checkbox);
+                classContain.appendChild(label);
                 var container = document.getElementById('theContainer');
-                container.appendChild(checkbox);
-                container.appendChild(label);
                 container.appendChild(br);
+                container.appendChild(classContain);
             })
         });
     </script>
