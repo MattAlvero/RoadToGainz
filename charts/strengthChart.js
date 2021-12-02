@@ -32,10 +32,23 @@ $(document).ready(() => {
         }]
     
     };
+
+    const plugin = {
+        id: 'custom_canvas_background_color',
+        beforeDraw: (chart) => {
+          const ctx = chart.canvas.getContext('2d');
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = 'white';
+          ctx.fillRect(0, 0, chart.width, chart.height);
+          ctx.restore();
+        }
+      };
     
     const config = {
         type: 'line',
         data: data,
+        plugins: [plugin],
         options: {}
     };
     

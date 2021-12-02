@@ -48,7 +48,7 @@
         background-position: 10px 50%;
       }
     }
-}
+
 
 /*Select every element*/
 [id^="item"] {
@@ -94,5 +94,5 @@
     z-index: 3;
     opacity: 1;
   }
-}
+
 
